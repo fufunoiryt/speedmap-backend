@@ -9,12 +9,13 @@ import (
 	"strconv"
 )
 
-// Configuration CORS - Autorise tous les headers nécessaires pour LibreSpeed
+// Configuration CORS - Headers explicites pour LibreSpeed
 func enableCors(w *http.ResponseWriter) {
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
-	(*w).Header().Set("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS")
-	(*w).Header().Set("Access-Control-Allow-Headers", "*")
-	(*w).Header().Set("Access-Control-Expose-Headers", "*")
+	(*w).Header().Set("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS, PUT, DELETE")
+	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Accept-Language, Content-Language, Content-Type, Content-Encoding, Content-Length, Cache-Control, Pragma, Origin, X-Requested-With")
+	(*w).Header().Set("Access-Control-Expose-Headers", "Content-Length, Content-Type, Content-Encoding")
+	(*w).Header().Set("Access-Control-Max-Age", "86400")
 	(*w).Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
 	(*w).Header().Set("Pragma", "no-cache")
 }
